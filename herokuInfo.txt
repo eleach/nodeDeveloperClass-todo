@@ -1,0 +1,32 @@
+https://guarded-lake-32413.herokuapp.com/
+
+
+https://git.heroku.com/guarded-lake-32413.git
+
+heroku addons:create mongolab:sandbox
+
+
+https://www.mlab.com/databases/heroku_ccdsd6bd
+
+ Attach MONGODB (@ref:mongolab-adjacent-87059) by user eleach2@yahoo.com
+
+To connect using the mongo shell:
+mongo ds135486.mlab.com:35486/heroku_ccdsd6bd -u <dbuser> -p <dbpassword>
+
+To connect using a driver via the standard MongoDB URI (what's this?):
+mongodb://<dbuser>:<dbpassword>@ds135486.mlab.com:35486/heroku_ccdsd6bd
+
+{ user: "heroku_ccdsd6bd", account: "heroku_ccdsd6bd" }
+
+Password: aabb66cc*
+
+mLab API key:
+
+    bGjy2fLQBD9GiNhPZNy0FQ_9odZHqO7A
+
+git commit (steps)
+
+git push heroku master
+
+
+
