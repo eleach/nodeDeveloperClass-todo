@@ -14,8 +14,6 @@ const todos = [{
 	text: 'Second test todo'
 }];
 
-//  runs before each test case
-//  empties db and then adds two todos
 beforeEach((done) => {
 	Todo.remove({}).then(() => {
 		return Todo.insertMany(todos);
@@ -33,9 +31,9 @@ describe('Post /todos', () => {
 			.expect(( res ) => {
 				expect(res.body.text).toBe(text);
 				})
-			.end((err, res) => {       ///  capture error in case not 200
+			.end((err, res) => {
 				if (err) {
-					return done(err);    ///  return so that the rest does not run
+					return done(err);
 				};
 			Todo.find({text}).then((todos) => {
 				expect(todos.length).toBe(1);
@@ -85,21 +83,5 @@ describe('GET /todos/:id', () => {
 			})
 			.end(done);
 		});
-
-	it('should return a 404 if todo not found', (done) => {
-		const idNotInDb = new ObjectID();  // a valid ID that is not in the db
-		request(app)
-			.get(`/todos/{idNotInDb.toHexString()}`)
-			.expect(404)
-			.end(done);
-	})
-
-	it('should return a 404 if invalid ID', (done) => {
-		request(app)
-			.get('/todos/123')
-			.expect(404)
-			.end(done);
 	});
-
-});
 
