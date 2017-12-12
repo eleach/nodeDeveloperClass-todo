@@ -34,8 +34,8 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
    //////////////// challenge
 
 
-	db.collection('Users').findOneAndDelete({
-		_id: new ObjectID('5a121035a49f735b47465537')}).then((result) => {
+	db.collection('Todos').findOneAndDelete({
+		_id: new ObjectID('5a3001817408ac4652c7f74c')}).then((result) => {
 		console.log( result );
 	});
 
