@@ -22,6 +22,7 @@ const {User} = require('./../server/models/user');
 //
 
 var id = '5a3001817408ac4652c7f74d';
+
 //        5a3001817408ac4652c7f74d
 
 
@@ -47,18 +48,17 @@ var id = '5a3001817408ac4652c7f74d';
 // });
 //
 
-Todo.remove({}).then((result) => {
-		console.log( result   );
-	});
+// Todo.remove({}).then((result) => {
+// 		console.log( result   );
+// 	});
 
 
-//
-// Todo.findById(id).then((u) => {
-//    if (!u) {
-//       return console.log( 'No user.'  );
-//    }
-//    console.log('\n User by id:\n\n', u);
-// }).catch((e)  => console.log( e ));;
+Todo.find().then((doc) => {
+   if (!doc) {
+      return console.log( 'No doc.'  );
+   }
+   console.log('\n doc:\n\n', doc);
+}).catch((e)  => console.log( e ));;
 
 
 // Todo.findById(id, function(err, todo) {
