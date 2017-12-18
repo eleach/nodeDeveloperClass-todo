@@ -73,7 +73,7 @@ app.delete('/todos/:id', (req, res) => {
 app.patch('/todos/:id', (req, res) => {
   var id = req.params.id;
 
-  // creates body object
+  // create body object
   // takes only two updatable properties from the request body
   var body = _.pick(req.body, ['text', 'completed']);
 
@@ -89,9 +89,10 @@ app.patch('/todos/:id', (req, res) => {
     body.completedAt = null;
   }
 
-	// {$set: body} will set the text and completed values from body object
-	// from body captured above
-	// {new: true} returns the new object
+
+   // {$set: body} will set the text and completed values from body object
+   // from body captured above
+   // {new: true} returns the new object
 
   Todo.findByIdAndUpdate(id, {$set: body}, {new: true}).then((todo) => {
     if (!todo) {
@@ -101,6 +102,21 @@ app.patch('/todos/:id', (req, res) => {
     res.send({todo});
   }).catch((e) => {
     res.status(400).send();
+  })
+});
+
+// POST /users
+app.post('/users', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  var user = new User(body);
+
+  user.save().then(() => {
+    return user.generateAuthToken();
+  }).then((token) => {
+  	// res.header takes key - value pair
+    res.header('x-auth', token).send(user);
+  }).catch((e) => {
+    res.status(400).send(e);
   })
 });
 

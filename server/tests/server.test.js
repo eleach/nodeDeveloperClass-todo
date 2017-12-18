@@ -34,6 +34,7 @@ describe('POST /todos', () => {
         expect(res.body.text).toBe(text);
       })
 		// .end comes at end of request result tests
+		// done comes from mocha
       .end((err, res) => { 
         if (err) {
           return done(err);
@@ -45,6 +46,7 @@ describe('POST /todos', () => {
           expect(todos[0].text).toBe(text);
           done();
 			 // .catch comes after DB calls
+			 // done is part of mocha
         }).catch((e) => done(e));
       });
   });
